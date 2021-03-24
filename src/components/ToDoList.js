@@ -8,11 +8,11 @@ library.add(faTrash, faEdit, faPlus);
 export default class ToDoList extends Component {
   state = {
     tasks: [
-      { Id: "1", Title: "Go to the groceries store", Status: "Done" },
-      { Id: "2", Title: "Re-order music playlist", Status: "Pending"},
-      { Id: "3", Title: "Call the bike shop", Status: "Pending"},
-      { Id: "4", Title: "Buy flowers", Status: "Done"},
-      { Id: "5", Title: "Clean the kitchen", Status: "Done"}
+      { id: "1", title: "Go to the groceries store", status: "Done" },
+      { id: "2", title: "Re-order music playlist", status: "Pending"},
+      { id: "3", title: "Call the bike shop", status: "Pending"},
+      { id: "4", title: "Buy flowers", status: "Done"},
+      { id: "5", title: "Clean the kitchen", status: "Done"}
     ]
   }
 
@@ -23,7 +23,7 @@ export default class ToDoList extends Component {
   }
 
   deleteTask = (task) => {
-    const filteredItems = this.state.tasks.filter(x => x.Id !== task.Id)
+    const filteredItems = this.state.tasks.filter(x => x.id !== task.id)
 
     this.setState({tasks: filteredItems})
   }
@@ -31,10 +31,10 @@ export default class ToDoList extends Component {
   editTask = (x) => {
     this.setState(state => ({
       tasks: state.tasks.map(task => {
-        if (task.Id === x.Id) {
+        if (task.id === x.id) {
           return {
             ...task,
-            Status: task.Status === "Done" ? "Pending" : "Done"
+            status: task.status === "Done" ? "Pending" : "Done"
           }
         } else {
             return task
@@ -61,16 +61,16 @@ export default class ToDoList extends Component {
             <tbody>
               {this.state.tasks.map(x => {
                 return (
-                  <tr key={x.Id}>
-                    <td>{x.Title}</td>
+                  <tr key={x.id}>
+                    <td>{x.title}</td>
                     <td>
                       <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         </input>
                       </div>
                     </td>
-                    <td style={{ color: x.Status === "Done" ? "green" : "red"}}>
-                      {x.Status}
+                    <td style={{ color: x.status === "Done" ? "green" : "red"}}>
+                      {x.status}
                     </td>
                     <td>
                       <button className="btn" onClick={() => this.editTask(x)}>

@@ -2,27 +2,27 @@ import React, { Component } from "react"
 
 export default class AddTask extends Component {
   state = {
-    Title: "",
-    Status: "Pending"
+    title: "",
+    status: "Pending"
   }
 
   handleTitleChange = (event) => {
-    this.setState({Title: event.target.value})
+    this.setState({title: event.target.value})
   }
 
   handleStatusChange = (event) => {
-    this.setState({Status: event.target.value})
+    this.setState({status: event.target.value})
   }
 
   handleToDoSubmit = (event) => {
     event.preventDefault()
     this.props.onAdd({
-      Title: this.state.Title,
-      Status: this.state.Status
+      title: this.state.title,
+      status: this.state.status
     })
     this.setState({
-      Title: "",
-      Status: "Pending"
+      title: "",
+      status: "Pending"
     })
   }
 
@@ -31,7 +31,7 @@ export default class AddTask extends Component {
       <div>
         <form onSubmit={this.handleToDoSubmit}>
           <div className="form-group">
-            <input value={this.state.Title} onChange={this.handleTitleChange} className="form-control" placeholder="Enter Title" />
+            <input value={this.state.title} onChange={this.handleTitleChange} className="form-control" placeholder="Enter Title" />
           </div>
           <button type="submit" className="form-control btn btn-primary" >Add New Task</button>
         </form>
