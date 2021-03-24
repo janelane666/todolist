@@ -21,3 +21,11 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
+
+.add-task {
+  margin-right: 30px;
+}
+
+.strike {
+  text-decoration: line-through;
+}

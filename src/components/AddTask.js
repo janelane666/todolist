@@ -29,11 +29,11 @@ export default class AddTask extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleToDoSubmit}>
+        <form className="add-task" onSubmit={this.handleToDoSubmit}>
           <div className="form-group">
             <input value={this.state.title} onChange={this.handleTitleChange} className="form-control" placeholder="Enter Title" />
           </div>
-          <button type="submit" className="form-control btn btn-primary" >Add New Task</button>
+          <button type="submit" className="form-control btn btn-primary">Add New Task</button>
         </form>
       </div>
     )
