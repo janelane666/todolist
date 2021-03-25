@@ -21,10 +21,11 @@ export default class ToDoList extends Component {
     }
      */
     const newTask = {
+      id: this.state.tasks.length,
       title: formData.title,
       completed: false
     }
-    
+
     this.setState({tasks: this.state.tasks.concat(newTask)})
   }
 
