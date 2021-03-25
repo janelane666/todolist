@@ -52,6 +52,7 @@ export default class Calendar extends Component {
   render() {
     return (
       <div>
+        <div className="month">March 2021</div>
         <div className="calendar">
           {this.currentDayOfWeek().map(day => {
               return (
