@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AddTask from "./AddTask.js";
 import data from "../data.json";
+import Calendar from "./Calendar.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTrash, faPlus, faEdit } from "@fortawesome/free-solid-svg-icons";
 library.add(faTrash, faEdit, faPlus);
@@ -54,6 +55,9 @@ export default class ToDoList extends Component {
     return (
       <div>
         <h1>TO DO LIST</h1>
+        <div>
+          <Calendar></Calendar>
+        </div>
         <div className="tasks-list">
           <table className="table">
             <tbody>
