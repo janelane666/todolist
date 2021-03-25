@@ -9,57 +9,52 @@ this.props = {
 export default class AddTask extends Component {
   state = {
     title: "",
-    errors: []
+    errors: ""
   }
 
-  handleChange = (event) => {
-    const newState = {
-      title: event.target.value
-    }
-
-    this.setState(newState)
+  handleTitleChange = (event) => {
+    this.setState({title: event.target.value})
   }
 
   isValidForm = () => {
-    // return this.state.title.trim().length !== 0
+    return this.state.title.trim().length !== 0
 
-    if (this.state.title.trim().length === 0) {
+    /* if (this.state.title.trim().length === 0) {
       return false
-    } else {
+     } else {
       return true
-    }
+    } */
   }
 
-  handleMaxDrinkingTea = (event) => {
+  handleSaveTitle = (event) => {
     event.preventDefault()
 
     if(this.isValidForm()) {
-      this.props.sendLogs({
+      this.props.sendNewTask({
         title: this.state.title,
       })
+      this.setState({title: "", errors: ""})
     } else {
-      const newState = {
-        errors: this.state.errors.concat("Please fill a new task")
-      }
-
-      this.setState(newState)
+      this.setState({errors: this.state.errors.concat("Please fill a new task")})
     }
   }
 
 
   render() {
     return (
-      <div>
+      <div className="add-task">
         {this.state.errors.length > 0 ?
-          <p>{this.state.errors[0]}</p> : null
+          <div className="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> {this.state.errors}.
+          </div> : null
         }
-        <form className="add-task" onSubmit={this.handleMaxDrinkingTea}>
+        <form onSubmit={this.handleSaveTitle}>
           <div className="form-group">
             <input
               value={this.state.title}
               className="form-control"
               placeholder="Enter Title"
-              onChange={this.handleChange}
+              onChange={this.handleTitleChange}
             />
           </div>
           <button type="submit" className="form-control btn btn-primary">

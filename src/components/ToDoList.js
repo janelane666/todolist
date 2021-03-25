@@ -11,28 +11,21 @@ export default class ToDoList extends Component {
     tasks: data
   }
 
-  sendLogs = (fornData) => {
+  sendNewTask = (formData) => {
     /*
-    fornData = {
+    formData = {
       title: string
     }
     {
       title: this.state.title,
     }
      */
-    console.log("Dada fron the forn")
-    console.log(fornData)
-
     const newTask = {
-      title: fornData.title,
+      title: formData.title,
       completed: false
     }
-
-    const newState = {
-      tasks: this.state.tasks.concat(newTask)
-    }
-
-    this.setState(newState)
+    
+    this.setState({tasks: this.state.tasks.concat(newTask)})
   }
 
   checkTask = (x) => {
@@ -84,7 +77,7 @@ export default class ToDoList extends Component {
             </tbody>
           </table>
         </div>
-        <AddTask sendLogs={this.sendLogs}></AddTask>
+        <AddTask sendNewTask={this.sendNewTask}></AddTask>
       </div>
     )
   }
