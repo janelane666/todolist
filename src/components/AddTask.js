@@ -1,39 +1,70 @@
 import React, { Component } from "react"
 
+/*
+this.props = {
+  sendLogs: function() {}
+}
+*/
+
 export default class AddTask extends Component {
   state = {
     title: "",
-    status: "Pending"
+    errors: []
   }
 
-  handleTitleChange = (event) => {
-    this.setState({title: event.target.value})
+  handleChange = (event) => {
+    const newState = {
+      title: event.target.value
+    }
+
+    this.setState(newState)
   }
 
-  handleStatusChange = (event) => {
-    this.setState({status: event.target.value})
+  isValidForm = () => {
+    // return this.state.title.trim().length !== 0
+
+    if (this.state.title.trim().length === 0) {
+      return false
+    } else {
+      return true
+    }
   }
 
-  handleToDoSubmit = (event) => {
+  handleMaxDrinkingTea = (event) => {
     event.preventDefault()
-    this.props.onAdd({
-      title: this.state.title,
-      status: this.state.status
-    })
-    this.setState({
-      title: "",
-      status: "Pending"
-    })
+
+    if(this.isValidForm()) {
+      this.props.sendLogs({
+        title: this.state.title,
+      })
+    } else {
+      const newState = {
+        errors: this.state.errors.concat("Please fill a new task")
+      }
+
+      this.setState(newState)
+    }
   }
+
 
   render() {
     return (
       <div>
-        <form className="add-task" onSubmit={this.handleToDoSubmit}>
+        {this.state.errors.length > 0 ?
+          <p>{this.state.errors[0]}</p> : null
+        }
+        <form className="add-task" onSubmit={this.handleMaxDrinkingTea}>
           <div className="form-group">
-            <input value={this.state.title} onChange={this.handleTitleChange} className="form-control" placeholder="Enter Title" />
+            <input
+              value={this.state.title}
+              className="form-control"
+              placeholder="Enter Title"
+              onChange={this.handleChange}
+            />
           </div>
-          <button type="submit" className="form-control btn btn-primary">Add New Task</button>
+          <button type="submit" className="form-control btn btn-primary">
+            Add New Task
+          </button>
         </form>
       </div>
     )
