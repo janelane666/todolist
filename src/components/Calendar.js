@@ -27,13 +27,14 @@ export default class Calendar extends Component {
       }
     ]
 
-    // let day = weekDay.map(day => day.letter)
+    let day = weekDay.map(day => day.letter)
+
 
     const dayNumber = new Date().getDay() - 1
 
     const x = weekDay[0].letter
 
-    return x
+    return weekDay
   }
 
   currentDay = () => {
@@ -52,34 +53,14 @@ export default class Calendar extends Component {
     return (
       <div>
         <div className="calendar">
-          <div className="col-sm">
-            <p>{this.currentDayOfWeek()}</p>
-            <p>{this.currentDay()}</p>
-          </div>
-          <div className="col-sm">
-            <p>{this.currentDayOfWeek()}</p>
-            <p>{this.currentDay()}</p>
-          </div>
-          <div className="col-sm">
-            <p>{this.currentDayOfWeek()}</p>
-            <p>{this.currentDay()}</p>
-          </div>
-          <div className="col-sm">
-            <p>{this.currentDayOfWeek()}</p>
-            <p>{this.currentDay()}</p>
-          </div>
-          <div className="col-sm">
-            <p>{this.currentDayOfWeek()}</p>
-            <p>{this.currentDay()}</p>
-          </div>
-          <div className="col-sm">
-            <p>{this.currentDayOfWeek()}</p>
-            <p>{this.currentDay()}</p>
-          </div>
-          <div className="col-sm">
-            <p>{this.currentDayOfWeek()}</p>
-            <p>{this.currentDay()}</p>
-          </div>
+          {this.currentDayOfWeek().map(day => {
+              return (
+                <div className="col-sm">
+                  <p>{day.letter}</p>
+                </div>
+              )
+            }
+          )}
         </div>
       </div>
     )
