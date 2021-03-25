@@ -2,19 +2,36 @@ import React, { Component } from "react"
 
 export default class Calendar extends Component {
   currentDayOfWeek = () => {
-    const weekDay = {
-      1: "Monday",
-      2: "Tuesday",
-      3: "Wednesday",
-      4: "Thursday",
-      5: "Friday",
-      6: "Saturday",
-      7: "Sunday"
-    }
+    const weekDay = [
+      {
+        number: 0,
+        letter: "Mon"
+      }, {
+        number: 1,
+        letter: "Tue"
+      }, {
+        number: 2,
+        letter: "Wed"
+      }, {
+        number: 3,
+        letter: "Thu"
+      }, {
+        number: 4,
+        letter: "Fri"
+      }, {
+        number: 5,
+        letter: "Sat"
+      }, {
+        number: 6,
+        letter: "Sun"
+      }
+    ]
 
-    const dayNumber = new Date().getDay()
+    // let day = weekDay.map(day => day.letter)
 
-    const x = weekDay[dayNumber]
+    const dayNumber = new Date().getDay() - 1
+
+    const x = weekDay[0].letter
 
     return x
   }
@@ -34,8 +51,8 @@ export default class Calendar extends Component {
   render() {
     return (
       <div>
-        <div class="container" className="calendar">
-          <div class="col-sm" className="day">
+        <div className="calendar">
+          <div className="col-sm">
             <p>{this.currentDayOfWeek()}</p>
             <p>{this.currentDay()}</p>
           </div>
