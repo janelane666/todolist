@@ -5,25 +5,32 @@ export default class Calendar extends Component {
     const weekDay = [
       {
         number: 0,
-        letter: "Mon"
+        letter: "Mon",
+        date : this.currentDay()-3
       }, {
         number: 1,
-        letter: "Tue"
+        letter: "Tue",
+        date : this.currentDay()-2
       }, {
         number: 2,
-        letter: "Wed"
+        letter: "Wed",
+        date : this.currentDay()-1
       }, {
         number: 3,
-        letter: "Thu"
+        letter: "Thu",
+        date : this.currentDay()
       }, {
         number: 4,
-        letter: "Fri"
+        letter: "Fri",
+        date : this.currentDay()+1
       }, {
         number: 5,
-        letter: "Sat"
+        letter: "Sat",
+        date : this.currentDay()+2
       }, {
         number: 6,
-        letter: "Sun"
+        letter: "Sun",
+        date : this.currentDay()+3
       }
     ]
 
@@ -54,14 +61,26 @@ export default class Calendar extends Component {
       <div>
         <div className="month">March 2021</div>
         <div className="calendar">
-          {this.currentDayOfWeek().map(day => {
-              return (
-                <div className="col-sm">
-                  <p>{day.letter}</p>
-                </div>
-              )
-            }
-          )}
+          <div className="date-calendar">
+            {this.currentDayOfWeek().map(day => {
+                return (
+                  <div className="col-sm">
+                    <p>{day.letter}</p>
+                  </div>
+                )
+              }
+            )}
+          </div>
+          <div className="date-calendar">
+            {this.currentDayOfWeek().map(day => {
+                return (
+                  <div className="col-sm">
+                    <p>{day.date}</p>
+                  </div>
+                )
+              }
+            )}
+          </div>
         </div>
       </div>
     )

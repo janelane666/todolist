@@ -35,7 +35,7 @@ h1 {
 
 .calendar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   background-color: azure;
   font-family: Monaco;
@@ -47,4 +47,9 @@ h1 {
   margin-left: 13px;
   margin-bottom: 20px;
   color: lightskyblue;
+}
+
+.date-calendar {
+  display: flex;
+  flex-direction: row;
 }
